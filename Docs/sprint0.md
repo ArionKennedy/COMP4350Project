@@ -65,10 +65,9 @@ Palette currently plans to include six core features:
 
 ## 4. User Stories and Acceptance Criteria
 
-Each core feature is represented by at least two user stories with acceptance criteria. Detailed user stories are maintained through the project's GitHub Issues and project-management tools.
+Each core feature is represented by at least two user stories with acceptance criteria. Detailed user stories are maintained through the project's GitHub Issues.
 
 - [GitHub Issues](<https://github.com/ArionKennedy/COMP4350Project/issues?q=is%3Aissue>)
-- [GitHub Project Board](<https://github.com/ArionKennedy/COMP4350Project/projects>)
 
 ---
 
