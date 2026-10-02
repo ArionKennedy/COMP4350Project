@@ -71,14 +71,14 @@ Each core feature is represented by at least two user stories with acceptance cr
 
 ---
 
-## 5. Initial Non-Functional Expectations [TBD]
+## 5. Initial Non-Functional Expectations
 
 The following non-functional expectations have been identified for the initial system.
 
 ### Security
 
 - User authentication information should be stored securely.
-- Users should only be able to modify their own private account data.
+- Users should only be able to modify and access their own private account data.
 
 ### Performance
 
