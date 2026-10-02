@@ -141,26 +141,24 @@ React Native with Expo will be used for cross-platform mobile development, while
 The current system is planned around a client-server architecture.
 
 ```mermaid
-flowchart TD
+flowchart LR
     A[React Native / Expo App]
-
-    subgraph Cloud["Cloud Platform"]
-        subgraph Docker["Docker Containers"]
-            B[ASP.NET Backend / API]
-            C[(PostgreSQL Database)]
-            D[(Redis Cache)]
-        end
+    
+    subgraph Docker["Dockerized Services"]
+        B[ASP.NET Backend / API]
+        C[(PostgreSQL Database)]
+        D[(Redis Cache)]
     end
-
-    E[Auth0<br/>User Authentication]
+    
+    E[Auth0]
     F[External Media APIs]
-
-    A -->|HTTP / API Requests| B
-    B -->|Queries / Writes| C
-    B -->|Recent Queries| D
+    
+    A -->|HTTP / API| B
+    B -->|Read / Write| C
+    B -->|Cache| D
     A -->|Authentication| E
-    B -->|Authentication / Token Validation| E
-    B -->|Media API Requests| F
+    B -->|Token Validation| E
+    B -->|Media Requests| F
 ```
 
 Possible external APIs may later be used to retrieve information about movies, books, games, or music.
