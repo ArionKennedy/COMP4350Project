@@ -109,23 +109,30 @@ The current planned technology stack is:
 ### Frontend
 
 - React Native
-- Expo Go
+- Expo
 
 ### Backend
 
-- .NET
+- ASP.NET
+- Docker
 
 ### Data
 
-- Primary database: TBD
-- Redis for caching, if needed
+- Primary database: PostgreSQL
+- Redis for caching recent queries
+- Docker
+
+### Authentication and External Services
+
+- Auth0 for user authentication
+- External Media APIs to reduce storage requirements
 
 ### Hosting
 
 - Cloud hosting provider: TBD
 - AWS is currently being considered
 
-React Native with Expo Go is being considered for cross-platform mobile development, while .NET will be used for backend application logic and APIs. Database and cloud hosting decisions are still being evaluated. These technology choices are tentative and may change as development progresses.
+React Native with Expo will be used for cross-platform mobile development, while ASP.NET will provide the backend application logic and APIs. PostgreSQL will serve as the primary database, with Redis used as a local server cache for frequently accessed or recent queries. Auth0 will handle user authentication, while external media APIs will be used where appropriate to reduce storage requirements. Docker will be used to containerize the different components of the system. The final cloud hosting provider is still to be determined, with AWS currently under consideration. These technology choices may be adjusted as development progresses.
 
 ---
 
@@ -136,15 +143,24 @@ The current system is planned around a client-server architecture.
 ```mermaid
 flowchart TD
     A[React Native / Expo App]
-    B[.NET Backend / API]
-    C[(Primary Database)]
-    D[(Redis Cache)]
-    E[External Media APIs]
+
+    subgraph Cloud["Cloud Platform"]
+        subgraph Docker["Docker Containers"]
+            B[ASP.NET Backend / API]
+            C[(PostgreSQL Database)]
+            D[(Redis Cache)]
+        end
+    end
+
+    E[Auth0<br/>User Authentication]
+    F[External Media APIs]
 
     A -->|HTTP / API Requests| B
-    B --> C
-    B --> D
-    B --> E
+    B -->|Queries / Writes| C
+    B -->|Recent Queries| D
+    A -->|Authentication| E
+    B -->|Authentication / Token Validation| E
+    B -->|Media API Requests| F
 ```
 
 Possible external APIs may later be used to retrieve information about movies, books, games, or music.
