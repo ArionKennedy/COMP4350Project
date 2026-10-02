@@ -194,6 +194,5 @@ The team will follow shared development practices for version control, code revi
 
 ### Communication
 
-- Primary communication platform: TBD
-- Team meetings: TBD
 - Important technical or project decisions should be documented where appropriate.
+- See details on [Team Working Agreement](Team%20Working%20Agreement.pdf)
