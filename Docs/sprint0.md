@@ -184,29 +184,10 @@ See:
 
 ---
 
-## 9. Development Process [TBD]
+## 9. Development Process
 
-The team will follow shared development practices for version control, code review, work planning, and communication.
+The team will follow shared development practices for version control, code review, coding practices, work planning, and communication.
 
-### Git Workflow
+See:
 
-- Branching strategy
-- Pull request process
-- Merge expectations
-- Commit practices
-
-### Code Review
-
-- Pull requests should be reviewed before merging.
-- Reviewers should check functionality, readability, and consistency.
-
-### Work Planning
-
-- Features will be divided into user stories.
-- Stories may be divided further into development tasks.
-- Work will be tracked using GitHub Issues and/or GitHub Projects.
-
-### Communication
-
-- Important technical or project decisions should be documented where appropriate.
-- See details on [Team Working Agreement](Team%20Working%20Agreement.pdf)
+[Process and Protocols](Docs/Process%20and%20Protocols.md)
