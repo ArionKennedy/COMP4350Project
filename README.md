@@ -41,19 +41,35 @@ Palette currently plans to include the following six core features:
 
 ## Technology Stack
 
-Current planned technologies include:
+The current planned technology stack is:
 
-#### Client
+### Frontend
+
 - React Native
-- Expo Go
+- Expo
 
-#### Backend
-- .NET
+### Backend
 
-#### Data and Infrastructure
-- Database: TBD
-- Redis
-- Cloud hosting: TBD
+- ASP.NET
+- Docker
+
+### Data
+
+- Primary database: PostgreSQL
+- Redis for caching recent queries
+- Docker
+
+### Authentication and External Services
+
+- Auth0 for user authentication
+- External Media APIs to reduce storage requirements
+
+### Hosting
+
+- Cloud hosting provider: TBD
+- AWS is currently being considered
+
+React Native with Expo will be used for cross-platform mobile development, while ASP.NET will provide the backend application logic and APIs. PostgreSQL will serve as the primary database, with Redis used as a local server cache for frequently accessed or recent queries. Auth0 will handle user authentication, while external media APIs will be used where appropriate to reduce storage requirements. Docker will be used to containerize the different components of the system. The final cloud hosting provider is still to be determined, with AWS currently under consideration.  
 
 Technology choices are preliminary and may evolve during development.
 
