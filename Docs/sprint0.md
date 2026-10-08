@@ -161,7 +161,8 @@ flowchart LR
     B -->|Media Requests| F
 ```
 
-Possible external APIs may later be used to retrieve information about movies, books, games, or music.
+Possible external APIs may later be used to retrieve information about movies, books, games, or music.  
+For more details and future updates, see [System Architecture](architecture.md).
 
 ---
 
