@@ -71,7 +71,8 @@ The current planned technology stack is:
 
 React Native with Expo will be used for cross-platform mobile development, while ASP.NET will provide the backend application logic and APIs. PostgreSQL will serve as the primary database, with Redis used as a local server cache for frequently accessed or recent queries. Auth0 will handle user authentication, while external media APIs will be used where appropriate to reduce storage requirements. Docker will be used to containerize the different components of the system. The final cloud hosting provider is still to be determined, with AWS currently under consideration.  
 
-Technology choices are preliminary and may evolve during development.
+Technology choices are preliminary and may evolve during development.  
+For more details and future updates, see [System Architecture](architecture.md).
 
 ## Project Documentation
 
