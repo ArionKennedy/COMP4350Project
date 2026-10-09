@@ -1,0 +1,6 @@
+node_modules
+.expo
+.git
+web-build
+android/build
+ios/build
