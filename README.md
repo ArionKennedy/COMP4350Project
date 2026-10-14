@@ -107,11 +107,14 @@ Current planned repository organization:
 /
 ├── README.md
 │
-├── docs/
+├── Docs/
 │   ├── Team Working Agreement.pdf
 │   └── sprint0.md
 │
-└── ...
+├── frontend
+│
+└── backend
+
 ```
 
 The structure may evolve as development continues.
