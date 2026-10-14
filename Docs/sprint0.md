@@ -65,9 +65,14 @@ Palette currently plans to include six core features:
 
 ## 4. User Stories and Acceptance Criteria
 
-Each core feature is represented by at least two user stories with acceptance criteria. Detailed user stories are maintained through the project's GitHub Issues.
+Each core feature is represented by at least two user stories with acceptance criteria. Links to the GitHub Issues for each user story can be found below. User stories are linked as sub-issues to there corresponding core feature.
 
-- [GitHub Issues](<https://github.com/ArionKennedy/COMP4350Project/issues?q=is%3Aissue>)
+- [Authentication](https://github.com/ArionKennedy/COMP4350Project/issues/25)
+- [Search & Discovery](https://github.com/ArionKennedy/COMP4350Project/issues/26)
+- [Logging & Archiving](https://github.com/ArionKennedy/COMP4350Project/issues/27)
+- [Recommendations](https://github.com/ArionKennedy/COMP4350Project/issues/28)
+- [Sharing & Social Features](https://github.com/ArionKennedy/COMP4350Project/issues/29)
+- [Analytics & Visualizations](https://github.com/ArionKennedy/COMP4350Project/issues/30)
 
 ---
 
@@ -191,4 +196,4 @@ The team will follow shared development practices for version control, code revi
 
 See:
 
-[Process and Protocols](Docs/Process%20and%20Protocols.md)
+[Process and Protocols](Process%20and%20Protocols.md)

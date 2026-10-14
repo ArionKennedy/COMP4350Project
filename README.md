@@ -10,30 +10,30 @@ Palette brings these activities together in one place and helps users build a pi
 
 Palette currently plans to include the following six core features:
 
-- **Authentication**
+- **[Authentication](https://github.com/ArionKennedy/COMP4350Project/issues/25)**
   - User account creation and login
   - Secure access to personal data
 
-- **Search & Discovery**
+- **[Search & Discovery](https://github.com/ArionKennedy/COMP4350Project/issues/26)**
   - Search for movies, books, games, music, and other supported media
   - Browse and discover media through relevant categories, creators, series, or other relationships
 
-- **Logging & Archiving**
+- **[Logging & Archiving](https://github.com/ArionKennedy/COMP4350Project/issues/27)**
   - Save watched, read, played, or listened-to media
   - Maintain a personal history of media activity
   - Organize saved media into collections or records
 
-- **Recommendations**
+- **[Recommendations](https://github.com/ArionKennedy/COMP4350Project/issues/28)**
   - Recommend what users may want to watch, read, play, or listen to next
   - Use user activity, community data, and relationships between media to support recommendations
   - Support specialized recommendations such as canonical or release-order viewing
 
-- **Sharing & Social Features**
+- **[Sharing & Social Features](https://github.com/ArionKennedy/COMP4350Project/issues/29)**
   - Rate and review media
   - Participate in discussions
   - Share media activity, opinions, and recommendations with other users
 
-- **Analytics & Visualizations**
+- **[Analytics & Visualizations](https://github.com/ArionKennedy/COMP4350Project/issues/30)**
   - View statistics about personal media consumption
   - Track information such as total activity time and unique directors, authors, or game studios
   - Generate graphical summaries and visualizations similar to Spotify Wrapped or Receiptify
@@ -107,11 +107,14 @@ Current planned repository organization:
 /
 ├── README.md
 │
-├── docs/
+├── Docs/
 │   ├── Team Working Agreement.pdf
 │   └── sprint0.md
 │
-└── ...
+├── frontend
+│
+└── backend
+
 ```
 
 The structure may evolve as development continues.
