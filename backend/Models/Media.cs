@@ -2,11 +2,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Palette.Api.Models;
 
-using System.Collections.Concurrent;
-using System.ComponentModel.DataAnnotations;
-
-namespace Palette.Api.Models;
-
 public class Media
 {
     [Key]

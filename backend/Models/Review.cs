@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Palette.Api.Models;
 
@@ -6,16 +7,14 @@ public class Review
 {
     [Key]
     public Guid ReviewId { get; set; }
-
-    [Key]
+    [ForeignKey(nameof(User))]
     public Guid UserId { get; set; }
-
-    [Key]
+    [ForeignKey(nameof(Media))]
     public Guid MediaId { get; set; }
+    public int Rating { get; set; }
+    public string? Body { get; set; }
+    public DateTime CreatedAt { get; set; }
 
-    public int rating { get; set; }
-
-    public string body { get; set; }
-
-    public DateTime created_at { get; set; }
+    public User User { get; set; } = null!;
+    public Media Media { get; set; } = null!;
 }

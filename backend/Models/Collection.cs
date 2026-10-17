@@ -1,17 +1,17 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Palette.Api.Models;
 
 public class Collection
 {
     [Key]
-    public Guid collection_id { get; set; }
-
-    [Key]
-    public Guid user_id { get; set; }
-
+    public Guid CollectionId { get; set; }
+    [ForeignKey(nameof(User))]
+    public Guid UserId { get; set; }
     [Required]
-    public string? name { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public DateTime CreatedAt { get; set; }
 
-    public DateTime created_at { get; set; }
+    public User User { get; set; } = null!;
 }

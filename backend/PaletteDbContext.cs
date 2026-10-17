@@ -93,15 +93,53 @@ public class PaletteDbContext : DbContext
         {
             entity.ToTable("USER_MEDIA_LOGS");
 
-            entity.HasIndex(u => u.LogId).IsUnique();
-
             entity.HasOne(u => u.User)
                 .WithMany()
-                .HasForeignKey<UserMediaLog>(u => u.UserId);
+                .HasForeignKey(u => u.UserId);
 
             entity.HasOne(u => u.Media)
                 .WithMany()
-                .HasForeignKey<UserMediaLog>(u => u.MediaId);
+                .HasForeignKey(u => u.MediaId);
+        });
+
+        // Reviews
+        modelBuilder.Entity<Review>(entity =>
+        {
+            entity.ToTable("REVIEWS");
+
+            entity.HasOne(r => r.User)
+                .WithMany()
+                .HasForeignKey(r => r.UserId);
+
+            entity.HasOne(r => r.Media)
+                .WithMany()
+                .HasForeignKey(r => r.MediaId);
+        });
+
+        // Collections
+        modelBuilder.Entity<Collection>(entity =>
+        {
+            entity.ToTable("COLLECTIONS");
+
+            entity.HasOne(c => c.User)
+                .WithMany()
+                .HasForeignKey(c => c.UserId);
+        });
+
+        // Collection Items
+        modelBuilder.Entity<CollectionItem>(entity =>
+        {
+            entity.ToTable("COLLECTION_ITEMS");
+
+            entity.HasKey(ci => new { ci.CollectionId, ci.MediaId });
+
+            entity.HasOne(ci => ci.Collection)
+                .WithMany()
+                .HasForeignKey(ci => ci.CollectionId);
+
+            entity.HasOne(ci => ci.Media)
+                .WithMany()
+                .HasForeignKey(ci => ci.MediaId);
         });
     }
 }
