@@ -13,7 +13,10 @@ public class PaletteDbContext : DbContext
     }
 
     // entity tables
-    public DbSet<User> Users => Set<User>(); 
+    public DbSet<User> Users => Set<User>();
+    public DbSet<Review> Reviews => Set<Review>();
+    public DbSet<Collection> Collections => Set<Collection>();
+    public DbSet<CollectionItem> CollectionItems => Set<CollectionItem>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
