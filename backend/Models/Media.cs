@@ -21,4 +21,6 @@ public class Media
     
     public Movie? Movie { get; set; }
     public TvShow? TvShow { get; set; }
+    public Book? Book { get; set; }
+    public Game? Game { get; set; }
 }
