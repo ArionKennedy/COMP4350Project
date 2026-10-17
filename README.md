@@ -59,6 +59,8 @@ The current planned technology stack is:
 - Redis for caching recent queries
 - Docker
 
+For the database schema, ER diagram, relationships, and data storage strategy, see [Database Design](Docs/database.md).
+
 ### Authentication and External Services
 
 - Auth0 for user authentication
@@ -80,6 +82,9 @@ Important project documentation:
 
 - [Team Working Agreement](Docs/Team%20Working%20Agreement.pdf)
 - [Sprint 0](Docs/sprint0.md)
+- [Sprint 1](Docs/sprint1.md)
+- [System Architecture](Docs/architecture.md)
+- [Database Design](Docs/database.md)
 - [Process and Protocols](Docs/Process%20and%20Protocols.md)
 
 ## Team
@@ -107,9 +112,13 @@ Current planned repository organization:
 /
 ├── README.md
 │
-├── docs/
+├── Docs/
+│   ├── architecture.md
+│   ├── database.md
+│   ├── Process and Protocols.md
 │   ├── Team Working Agreement.pdf
-│   └── sprint0.md
+│   ├── sprint0.md
+│   └── sprint1.md
 │
 └── ...
 ```
