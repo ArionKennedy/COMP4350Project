@@ -86,6 +86,8 @@ Important project documentation:
 - [System Architecture](Docs/architecture.md)
 - [Database Design](Docs/database.md)
 - [Process and Protocols](Docs/Process%20and%20Protocols.md)
+- [Local Setup](Docs/Local%20Setup.md)
+- [Database Migrations](Docs/db-migration.md)
 
 ## Team
 
@@ -98,32 +100,89 @@ Important project documentation:
 
 ## Project Status
 
-Palette is currently in the Sprint 0 planning and setup stage. The product vision, initial requirements, technology choices, and architecture are still subject to change.
+Palette is currently in Sprint 1, with active development underway. The initial project structure, database setup, and frontend-backend communication have been established. Development of the core features is ongoing.
+
+Technology choices and implementation details may evolve as development progresses.
 
 ## Development Setup
 
-Setup instructions will be added once the initial development environment is finalized.
+For complete setup instructions, including frontend, backend, Docker, PostgreSQL, environment variables, and database migrations, see the [Local Setup Guide](Docs/Local%20Setup.md).
+
+### Prerequisites
+
+- Node.js and npm
+- .NET SDK 10
+- Docker Desktop (or Docker Engine with Compose)
+- Expo Go (optional, for testing on a physical device)
+
+### Quick Start
+
+**1. Install dependencies**
+
+From the project root:
+
+```bash
+npm install
+cd frontend
+npm ci
+cd ..
+dotnet restore backend/Palette.Api.csproj
+```
+
+**2. Configure the environment**
+
+Copy the frontend environment template:
+
+```bash
+cp frontend/.env.example frontend/.env.local
+```
+
+Configure the PostgreSQL database and backend connection string according to the [Local Setup Guide](Docs/Local%20Setup.md).
+
+Make sure the database is running before starting the backend.
+
+**3. Start the application**
+
+From the project root:
+
+```bash
+npm start
+```
+
+This starts both the Expo frontend and ASP.NET Core backend.
+
+To stop both services, press `Ctrl+C`.
+
+### Running Services Separately
+
+The frontend and backend can also be started independently in separate terminals.
+
+**Frontend:**
+
+```bash
+cd frontend
+npx expo start
+```
+
+**Backend:**
+
+```bash
+cd backend
+dotnet run
+```
 
 ### Repository Structure
 
-Current planned repository organization:
-
 ```text
-/
-├── README.md
-│
-├── Docs/
-│   ├── architecture.md
-│   ├── database.md
-│   ├── Process and Protocols.md
-│   ├── Team Working Agreement.pdf
-│   ├── sprint0.md
-│   └── sprint1.md
-│
-├── frontend
-│
-└── backend
-
+COMP4350Project/
+├── backend/             # ASP.NET Core API
+├── frontend/            # React Native / Expo application
+├── Docs/                # Project documentation
+├── package.json         # Development startup scripts
+├── package-lock.json
+└── README.md
 ```
+
+The frontend and backend are maintained as separate projects and can be run together using npm start from the repository root, or independently.
 
 The structure may evolve as development continues.
