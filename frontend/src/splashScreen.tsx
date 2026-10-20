@@ -4,7 +4,7 @@ import { useSession } from './auth-ctx';
 SplashScreen.preventAutoHideAsync();
 
 export function SplashScreenController() {
-  const { isLoading } = useSession(); // wait until authentication finished to move aaway from splash screen
+  const { isLoading } = useSession(); // wait until authentication finished to move away from splash screen
 
   if (!isLoading) {
     SplashScreen.hide();
