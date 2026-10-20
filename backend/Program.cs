@@ -11,7 +11,19 @@ builder.Services.AddDbContext<PaletteDbContext>(options =>
 // Configure OpenAPI
 builder.Services.AddOpenApi();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("FrontendDev", policy =>
+    {
+        policy.WithOrigins("http://localhost:8081")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
+
+app.UseCors("FrontendDev");
 
 // Development configuration
 if (app.Environment.IsDevelopment())
@@ -29,5 +41,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.MapGet("/api/test", () =>
+    Results.Ok(new { message = "Connected to backend!" })
+);
 
 app.Run();

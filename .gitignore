@@ -17,6 +17,9 @@ obj/
 .env.*
 !.env.example
 
+# Local frontend environment variables
+frontend/.env.local
+
 # macOS
 .DS_Store
 

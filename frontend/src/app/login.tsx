@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react';
+import { testConnection } from '@/services/api';
+
 import { Link } from 'expo-router';
 import { Pressable, StyleSheet } from 'react-native';
 
@@ -6,6 +9,17 @@ import { ThemedView } from '@/components/themed-view';
 import { Spacing } from '@/constants/theme';
 
 export default function WelcomeScreen() {
+  const [apiMessage, setApiMessage] = useState('Connecting...');
+
+  useEffect(() => {
+    testConnection()
+      .then(setApiMessage)
+      .catch((error) => {
+        console.error(error);
+        setApiMessage('Backend connection failed');
+      });
+  }, []);
+
   return (
     <ThemedView style={styles.container}>
       <ThemedView style={styles.content}>
@@ -18,6 +32,7 @@ export default function WelcomeScreen() {
         <ThemedText themeColor="textSecondary" style={styles.description}>
           Keep track of what you watch, read, play, and listen to—all in one place.
         </ThemedText>
+        <ThemedText>{apiMessage}</ThemedText>
         <Link href="/(app)/(tabs)/home" asChild>
           <Pressable style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}>
             <ThemedText type="smallBold" style={styles.buttonLabel}>
