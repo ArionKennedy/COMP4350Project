@@ -3,7 +3,8 @@ export type ShowListItem = {
   title: string;
 };
 
-// Frontend demo data. Replace with the current user's shows when the API is ready.
+// Frontend demo data. 
+// This is to be replaced with the current user's shows when the API is ready.
 export const SAMPLE_SHOWS: readonly ShowListItem[] = [
   { mediaId: 'sample-1', title: 'Breaking Bad' },
   { mediaId: 'sample-2', title: 'Stranger Things' },

@@ -16,11 +16,9 @@ public sealed class ShowLogService(PaletteDbContext db)
 
     public async Task<ShowLogPage> GetPage(Guid userId, int page, CancellationToken cancellationToken)
     {
-        var items = await db.UserMediaLogs.AsNoTracking()
-            .Where(log => log.UserId == userId && log.Media.TvShow != null)
-            .OrderByDescending(log => log.LoggedDate).ThenByDescending(log => log.LogId)
-            .Skip((page - 1) * PageSize).Take(PageSize + 1)
-            .Select(log => new ShowLogItem(log.LogId, log.MediaId,
+        var items = await db.UserMediaLogs.AsNoTracking().Where(log => log.UserId == userId && log.Media.TvShow != null)
+            .OrderByDescending(log => log.LoggedDate).ThenByDescending(log => log.LogId).Skip((page - 1) * PageSize)
+            .Take(PageSize + 1).Select(log => new ShowLogItem(log.LogId, log.MediaId,
                 log.Media.TvShow!.TmdbTvId, log.Media.Title, log.Status, log.LoggedDate))
             .ToListAsync(cancellationToken);
         return new ShowLogPage(items.Take(PageSize).ToList(), page, items.Count > PageSize);
