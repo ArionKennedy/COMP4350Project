@@ -11,6 +11,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { Text } from '@/components/ui/text';
+import { router } from 'expo-router';
 import * as React from 'react';
 import { Pressable, type TextInput, View } from 'react-native';
 
@@ -78,7 +79,7 @@ export function SignInForm() {
             Don&apos;t have an account?{' '}
             <Pressable
               onPress={() => {
-                // TODO: Navigate to sign up screen
+                router.replace('/signup');
               }}>
               <Text className="text-sm underline underline-offset-4">Sign up</Text>
             </Pressable>
