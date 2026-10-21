@@ -1,21 +1,30 @@
 name: Node.js Unit Tests
  
 on:
-  push:
-    branches:
-      - master
-      - develop
   pull_request:
-    branches:
-      - master
-      - 'develop'
 
 jobs:
-  label_issue:
+  frontend_tests:
+    name: Frontend Tests
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: frontend
+
     steps:
-      - env:
-          GH_TOKEN: ${{ secrets.MY_TOKEN }}
-          ISSUE_URL: ${{ github.event.issue.html_url }}
-        run: |
-          gh issue edit $ISSUE_URL --add-label "triage"
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Test react frontend
+        run: npm test -- --watch=false
