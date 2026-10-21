@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { testConnection } from '@/services/api';
 
-import { Link } from 'expo-router';
+import { useSession } from '@/auth-ctx';
 import { Pressable, StyleSheet } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
@@ -9,6 +9,7 @@ import { ThemedView } from '@/components/themed-view';
 import { Spacing } from '@/constants/theme';
 
 export default function WelcomeScreen() {
+  const { signIn } = useSession();
   const [apiMessage, setApiMessage] = useState('Connecting...');
 
   useEffect(() => {
@@ -33,13 +34,11 @@ export default function WelcomeScreen() {
           Keep track of what you watch, read, play, and listen to—all in one place.
         </ThemedText>
         <ThemedText>{apiMessage}</ThemedText>
-        <Link href="/(app)/(tabs)/home" asChild>
-          <Pressable style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}>
+          <Pressable onPress={signIn} style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}>
             <ThemedText type="smallBold" style={styles.buttonLabel}>
               Get started
             </ThemedText>
           </Pressable>
-        </Link>
       </ThemedView>
     </ThemedView>
   );

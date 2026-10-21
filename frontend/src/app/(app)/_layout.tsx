@@ -2,7 +2,7 @@ import { Stack } from 'expo-router';
 
 export default function AppLayout() {
   return (
-    <Stack>
+    <Stack initialRouteName="(tabs)">
         <Stack.Screen name="logout" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
     </Stack>
