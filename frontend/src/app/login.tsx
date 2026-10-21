@@ -6,7 +6,7 @@ import { Pressable, StyleSheet } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { Spacing } from '@/constants/theme';
+import { Spacing } from '@/lib/theme';
 
 export default function WelcomeScreen() {
   const [apiMessage, setApiMessage] = useState('Connecting...');

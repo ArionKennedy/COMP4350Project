@@ -3,12 +3,14 @@ import { Stack } from 'expo-router';
 
 import { SessionProvider, useSession } from '@/auth-ctx';
 import { SplashScreenController } from '@/splashScreen';
+import { PortalHost } from '@rn-primitives/portal';
 
 export default function Root() {
   return (
     <SessionProvider>
       <SplashScreenController />
       <RootNavigator />
+      <PortalHost />
     </SessionProvider>
   );
 }
