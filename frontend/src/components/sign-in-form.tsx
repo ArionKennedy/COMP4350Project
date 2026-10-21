@@ -11,24 +11,68 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { Text } from '@/components/ui/text';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { AlertCircleIcon } from 'lucide-react-native';
 import { router } from 'expo-router';
-import * as React from 'react';
-import { Pressable, type TextInput, View } from 'react-native';
+import { useState, useRef } from 'react'
+import {
+  ActivityIndicator,
+  Keyboard,
+  Pressable,
+  TouchableWithoutFeedback,
+  type TextInput,
+  View,
+} from 'react-native';
+import { useAuth, useSignIn } from '@clerk/expo'
 
 export function SignInForm() {
-  const passwordInputRef = React.useRef<TextInput>(null);
+  const { isLoaded } = useAuth();
+  const { signIn, errors, fetchStatus } = useSignIn()
+  
+  const [emailAddress, setEmailAddress] = useState('');
+  const [password, setPassword] = useState('');
+
+  const passwordInputRef = useRef<TextInput>(null);
 
   function onEmailSubmitEditing() {
     passwordInputRef.current?.focus();
   }
 
-  function onSubmit() {
-    // TODO: Submit form and navigate to protected screen if successful
-    router.replace('/(app)/(tabs)/home');
+  async function onSubmit() {
+    const { error } = await signIn.password({ emailAddress, password });
+    if (error) {
+      // TODO Handle the error in your app.
+      // See https://clerk.com/docs/guides/development/custom-flows/error-handling
+      console.error(JSON.stringify(error, null, 2));
+      return;
+    }
+
+    
+    if(signIn.status === 'complete'){
+      await signIn.finalize({
+        navigate: () => {
+          router.replace('/(app)/(tabs)/home');
+        },
+      })
+
+    }
+     else {
+      // TODO Check why the sign-in is not complete
+      console.error('Sign-in attempt not complete:', signIn);
+    }
+  }
+
+  if (!isLoaded) {
+    return (
+      <View className="items-center gap-3">
+        <ActivityIndicator />
+      </View>
+    );
   }
 
   return (
-    <View className="gap-6">
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} accessible={false}>
+      <View className="gap-6">
       <Card className="border-border/0 sm:border-border shadow-none sm:shadow-sm sm:shadow-black/5">
         <CardHeader>
           <CardTitle className="text-center text-xl sm:text-left">Sign in to your app</CardTitle>
@@ -49,7 +93,17 @@ export function SignInForm() {
                 onSubmitEditing={onEmailSubmitEditing}
                 returnKeyType="next"
                 submitBehavior="submit"
+                onChangeText={setEmailAddress}
               />
+
+              {errors.fields.identifier && 
+                <Alert variant="destructive" icon={AlertCircleIcon}>
+                  <AlertTitle>Unable to Sign In</AlertTitle>
+                  <AlertDescription>
+                    {errors?.fields?.identifier?.longMessage}
+                  </AlertDescription>
+                </Alert>
+              }
             </View>
             <View className="gap-1.5">
               <View className="flex-row items-center">
@@ -70,29 +124,34 @@ export function SignInForm() {
                 secureTextEntry
                 returnKeyType="send"
                 onSubmitEditing={onSubmit}
+                onChangeText={setPassword}
               />
+
+              {errors.fields.password && 
+                <Alert variant="destructive" icon={AlertCircleIcon}>
+                  <AlertTitle>Unable to Sign In</AlertTitle>
+                  <AlertDescription>
+                    {errors?.fields?.password?.longMessage}
+                  </AlertDescription>
+                </Alert>
+              }
             </View>
-            <Button className="w-full" onPress={onSubmit}>
+            <Button className="w-full" onPress={onSubmit} disabled={!emailAddress || !password || fetchStatus === 'fetching'}>
               <Text>Continue</Text>
             </Button>
           </View>
-          <Text className="text-center text-sm">
-            Don&apos;t have an account?{' '}
+          <View className="flex-row items-center justify-center">
+            <Text className="text-sm">Don&apos;t have an account? </Text>
             <Pressable
               onPress={() => {
                 router.replace('/signup');
               }}>
               <Text className="text-sm underline underline-offset-4">Sign up</Text>
             </Pressable>
-          </Text>
-          <View className="flex-row items-center">
-            <Separator className="flex-1" />
-            <Text className="text-muted-foreground px-4 text-sm">or</Text>
-            <Separator className="flex-1" />
           </View>
-          <SocialConnections />
         </CardContent>
       </Card>
-    </View>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
