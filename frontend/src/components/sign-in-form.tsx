@@ -24,6 +24,7 @@ export function SignInForm() {
 
   function onSubmit() {
     // TODO: Submit form and navigate to protected screen if successful
+    router.replace('/(app)/(tabs)/home');
   }
 
   return (

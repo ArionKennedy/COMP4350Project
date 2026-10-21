@@ -19,14 +19,14 @@ function RootNavigator() {
   const { session } = useSession();
 
   return (
-    <Stack>
+    <Stack screenOptions={{ headerShown: false }}>
       <Stack.Protected guard={!!session}>
-        <Stack.Screen name="(app)" options={{ headerShown: false }}/>
+        <Stack.Screen name="(app)"/>
       </Stack.Protected>
 
       <Stack.Protected guard={!session}>
-        <Stack.Screen name="login" options={{ headerShown: false }}/>
-        <Stack.Screen name="signup" options={{ headerShown: false }}/>
+        <Stack.Screen name="login"/>
+        <Stack.Screen name="signup"/>
       </Stack.Protected>
     </Stack>
   );
