@@ -31,7 +31,7 @@ function RootNavigator() {
   }
 
   return (
-    <Stack screenOptions={{ headerShown: false }}>
+    <Stack screenOptions={{ headerShown: false, animation: 'none', contentStyle: { backgroundColor: '#000000' }}}>
       <Stack.Protected guard={!!isSignedIn}>
         <Stack.Screen name="(app)"/>
       </Stack.Protected>
