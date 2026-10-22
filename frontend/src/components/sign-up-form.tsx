@@ -18,6 +18,7 @@ import { useState, useRef } from 'react'
 import {
   ActivityIndicator,
   Keyboard,
+  Platform,
   Pressable,
   TextInput,
   TouchableWithoutFeedback,
@@ -70,9 +71,8 @@ export function SignUpForm() {
     );
   }
 
-  return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} accessible={false}>
-      <View className="gap-6">
+  const form = (
+    <View className="gap-6">
       <Card className="border-border/0 sm:border-border shadow-none sm:shadow-sm sm:shadow-black/5">
         <CardHeader>
           <CardTitle className="text-center text-xl sm:text-left">Create your account</CardTitle>
@@ -142,7 +142,16 @@ export function SignUpForm() {
           </View>
         </CardContent>
       </Card>
-      </View>
+    </View>
+  );
+
+  if (Platform.OS === 'web') {
+    return form;
+  }
+
+  return (
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} accessible={false}>
+      {form}
     </TouchableWithoutFeedback>
   );
 }
