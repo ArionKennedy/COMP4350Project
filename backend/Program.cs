@@ -1,4 +1,5 @@
 using Backend.Features.Health;
+using Backend.Features.Lookup;
 using Backend.Features.Search;
 using Backend.Providers;
 using Backend.Providers.Tmdb;
@@ -23,6 +24,7 @@ builder.Services.AddApiErrorHandling();
 builder.Services.AddMediaProviders();
 builder.Services.AddTmdbProvider(builder.Configuration);
 builder.Services.AddSearchFeature();
+builder.Services.AddLookupFeature();
 
 builder.Services.AddCors(options =>
 {
@@ -64,5 +66,6 @@ app.MapGet("/api/test", () =>
 
 app.MapHealthEndpoints();
 app.MapSearchEndpoints();
+app.MapLookupEndpoints();
 
 app.Run();
