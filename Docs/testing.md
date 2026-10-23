@@ -31,7 +31,7 @@ Integration tests verify interactions between system components.
 
 ### Tested Components
 
-- Movie search integration tests: [To be updated]
+- Movie search integration tests: Not implmented yet
 
 ## 4. Mocking and Test Utilities
 
