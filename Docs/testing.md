@@ -31,7 +31,7 @@ Integration tests verify interactions between system components.
 
 ### Tested Components
 
-- Movie search integration tests: [To be updated]
+- Movie search integration tests: Not implmented yet
 
 ## 4. Mocking and Test Utilities
 
@@ -52,7 +52,7 @@ The same command is used in the GitHub Actions CI workflow.
 
 Current automated testing focuses on database operations, with movie search integration tests being added.
 
-Coverage evidence: [Link to coverage report or screenshot]
+Coverage evidence: [Link to CI coverage report](https://github.com/ArionKennedy/PaletteProject/actions/runs/40026656302)
 
 ## 7. Current Limitations
 
