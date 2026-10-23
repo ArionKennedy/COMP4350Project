@@ -52,7 +52,7 @@ The same command is used in the GitHub Actions CI workflow.
 
 Current automated testing focuses on database operations, with movie search integration tests being added.
 
-Coverage evidence: [Link to coverage report or screenshot]
+Coverage evidence: [Link to CI coverage report](https://github.com/ArionKennedy/PaletteProject/actions/runs/40026656302)
 
 ## 7. Current Limitations
 
