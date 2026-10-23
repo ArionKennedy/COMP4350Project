@@ -1,4 +1,10 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Backend.Features.Health;
+using Backend.Features.Lookup;
+using Backend.Features.Search;
+using Backend.Providers;
+using Backend.Providers.Tmdb;
+using Backend.Shared.Errors;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Npgsql;
@@ -79,6 +85,15 @@ builder.Services
     });
 builder.Services.AddAuthorization();
 
+// Register ProblemDetails and ApiExceptionHandler (required by app.UseExceptionHandler)
+builder.Services.AddApiErrorHandling();
+
+// Register media providers and the search feature
+builder.Services.AddMediaProviders();
+builder.Services.AddTmdbProvider(builder.Configuration);
+builder.Services.AddSearchFeature();
+builder.Services.AddLookupFeature();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("FrontendDev", policy =>
@@ -90,6 +105,9 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+//adding the api exception handler.
+app.UseExceptionHandler();
 
 app.UseCors("FrontendDev");
 app.UseExceptionHandler();
@@ -120,5 +138,9 @@ app.MapGet("/api/test", () =>
     .WithSummary("Check API connectivity");
 
 app.MapCurrentUserEndpoints();
+
+app.MapHealthEndpoints();
+app.MapSearchEndpoints();
+app.MapLookupEndpoints();
 
 app.Run();

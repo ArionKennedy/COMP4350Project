@@ -117,14 +117,13 @@ Replace `your_local_password` with a password of your choice. `POSTGRES_PORT` is
 
 The Docker Compose configuration uses the following settings:
 
-| Setting | Value |
-|---|---|
-| Container | `palette-postgres` |
-| Database | Value of `POSTGRES_DB` |
-| Username | Value of `POSTGRES_USER` |
-| Password | Value of `POSTGRES_PASSWORD` |
-| Host port | Value of `POSTGRES_PORT` (default `5433`) |
-| Container port | `5432` |
+| Setting   | Value                        |
+| --------- | ---------------------------- |
+| Container | `palette-postgres`           |
+| Database  | `palette_dev`                |
+| Username  | `palette`                    |
+| Password  | Value of `POSTGRES_PASSWORD` |
+| Port      | `5432`                       |
 
 ### Start PostgreSQL
 
