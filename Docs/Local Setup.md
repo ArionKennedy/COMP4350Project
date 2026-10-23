@@ -312,8 +312,6 @@ dotnet test tests/Palette.Tests.csproj
 
 The same command is used in the GitHub Actions CI workflow.
 
-Some integration tests may require additional test configuration or services. Refer to the testing documentation for details.
-
 ### Frontend Checks
 
 Automated frontend tests have not yet been implemented.
