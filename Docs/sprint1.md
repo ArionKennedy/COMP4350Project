@@ -20,9 +20,10 @@ Detailed development progress is tracked through our GitHub issues, pull request
 
 | Feature | Sprint 1 Progress | Evidence |
 |---|---|---|
-| Authentication | Implemented user authentication, including sign-up, sign-in, and sign-out. | [Issue/PR] |
-| Movie Search | Implemented movie title search and movie detail pages displaying information such as posters, genres, and runtime. | [Issue/PR] |
+| Authentication | Implemented user authentication, including sign-up, sign-in, and sign-out. | [Issue/PR](https://github.com/ArionKennedy/PaletteProject/pull/44) |
+| Movie Search | Implemented movie title search and movie detail pages displaying information such as posters, genres, and runtime. | [Issue/PR](https://github.com/ArionKennedy/PaletteProject/pull/48) |
 
+**Note:** The linked evidence is the most representive PR for the feature, bugs might be fixed in separate small PRs.
 Other planned features remain under development and are tracked on the sprint board.
 
 ### Development Infrastructure
