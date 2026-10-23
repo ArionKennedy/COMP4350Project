@@ -1,6 +1,6 @@
 import { Stack } from 'expo-router';
 import { useAuth, useUser } from '@clerk/expo';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 
 import { Button } from '@/components/ui/button';
@@ -10,12 +10,17 @@ import { syncCurrentUser } from '@/services/api';
 export default function AppLayout() {
   const { isLoaded: authLoaded, getToken } = useAuth();
   const { isLoaded: userLoaded, user } = useUser();
+  const getTokenRef = useRef(getToken);
   const [retry, setRetry] = useState(0);
   const [confirmed, setConfirmed] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const userId = user?.id;
   const email = user?.primaryEmailAddress?.emailAddress;
   const username = user?.username || user?.firstName || email?.split('@')[0];
+
+  useEffect(() => {
+    getTokenRef.current = getToken;
+  }, [getToken]);
 
   useEffect(() => {
     if (!authLoaded || !userLoaded || !userId) {
@@ -33,7 +38,7 @@ export default function AppLayout() {
           throw new Error('Your Clerk account needs a primary email and username to sync.');
         }
 
-        const token = await getToken();
+        const token = await getTokenRef.current();
         if (!token) {
           throw new Error('Could not obtain an authentication token from Clerk.');
         }
@@ -54,7 +59,7 @@ export default function AppLayout() {
     return () => {
       isActive = false;
     };
-  }, [authLoaded, email, getToken, retry, userId, userLoaded, username]);
+  }, [authLoaded, email, retry, userId, userLoaded, username]);
 
   if (!authLoaded || !userLoaded || (!confirmed && !error)) {
     return (
