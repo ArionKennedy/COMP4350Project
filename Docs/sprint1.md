@@ -40,12 +40,12 @@ See the [Sprint Board](https://github.com/users/ArionKennedy/projects/4) for det
 Our current testing includes database unit tests and integration tests for movie search.
 
 - **Unit Tests:** Database unit tests using EF Core InMemory.
-- **Integration Tests:** Movie search integration tests.
+- **Integration Tests:** Not yet implemented.
 - **Frontend Tests:** Not yet implemented.
 
 See [Testing Documentation](testing.md) for testing tools, execution instructions, and current limitations.
 
-Coverage evidence: [Link to coverage report or screenshot]
+Coverage evidence: [Link to testing coverage](https://github.com/ArionKennedy/PaletteProject/actions/runs/40025119304)
 
 ## 4. Continuous Integration
 
