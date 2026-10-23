@@ -45,7 +45,7 @@ Our current testing includes database unit tests and integration tests for movie
 
 See [Testing Documentation](https://github.com/ArionKennedy/PaletteProject/actions/runs/40025119304) for testing tools, execution instructions, and current limitations.
 
-Coverage evidence: [Link to coverage report or screenshot]
+Coverage evidence: [Link to testing coverage](https://github.com/ArionKennedy/PaletteProject/actions/runs/40025119304)
 
 ## 4. Continuous Integration
 
