@@ -114,13 +114,13 @@ Replace `your_local_password` with a password of your choice. Make sure the `.en
 
 The Docker Compose configuration uses the following settings:
 
-| Setting | Value |
-|---|---|
-| Container | `palette-postgres` |
-| Database | `palette_dev` |
-| Username | `palette` |
-| Password | Value of `POSTGRES_PASSWORD` |
-| Port | `5432` |
+| Setting   | Value                        |
+| --------- | ---------------------------- |
+| Container | `palette-postgres`           |
+| Database  | `palette_dev`                |
+| Username  | `palette`                    |
+| Password  | Value of `POSTGRES_PASSWORD` |
+| Port      | `5432`                       |
 
 ### Start PostgreSQL
 
@@ -154,6 +154,16 @@ Replace `your_local_password` with the same password used in the Docker `.env` f
 .NET User Secrets stores the local connection string outside the repository, so database credentials do not need to be committed to Git.
 
 If the backend project already has a `UserSecretsId`, you can skip `dotnet user-secrets init`.
+
+### Configure the TMDB Token
+
+The backend will not start without a TMDB token. Copy the **API Read Access Token** from discord/resources and store it in user secrets:
+
+```bash
+dotnet user-secrets set "Tmdb:ReadAccessToken" "<your token>" --project backend
+```
+
+(run at .../COMP4350Project)
 
 ### Stop PostgreSQL
 
