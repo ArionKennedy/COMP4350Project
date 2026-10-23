@@ -43,7 +43,7 @@ Our current testing includes database unit tests and integration tests for movie
 - **Integration Tests:** Not yet implemented.
 - **Frontend Tests:** Not yet implemented.
 
-See [Testing Documentation](https://github.com/ArionKennedy/PaletteProject/actions/runs/40025119304) for testing tools, execution instructions, and current limitations.
+See [Testing Documentation](testing.md) for testing tools, execution instructions, and current limitations.
 
 Coverage evidence: [Link to testing coverage](https://github.com/ArionKennedy/PaletteProject/actions/runs/40025119304)
 
