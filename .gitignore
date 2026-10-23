@@ -3,6 +3,26 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# Node / Expo
+node_modules/
+.expo/
+dist/
+
+# .NET
+bin/
+obj/
+
+# Local environment
+.env
+.env.*
+!.env.example
+
+# Local frontend environment variables
+frontend/.env.local
+
+# macOS
+.DS_Store
+
 # User-specific files
 *.rsuser
 *.suo
