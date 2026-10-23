@@ -87,7 +87,7 @@ Important project documentation:
 - [Database Design](Docs/database.md)
 - [Process and Protocols](Docs/Process%20and%20Protocols.md)
 - [Local Setup](Docs/Local%20Setup.md)
-- [Database Migrations](Docs/db-migration.md)
+- [Database Migrations](Docs/db_migration.md)
 
 ## Team
 
