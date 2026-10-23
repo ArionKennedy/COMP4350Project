@@ -59,6 +59,7 @@ export default function MovieDetailsPage() {
   return (
     <ScrollView
       style={{ backgroundColor: theme.background }}
+      showsVerticalScrollIndicator={false}
       contentContainerStyle={[
         styles.content,
         Platform.OS === 'web' && { paddingTop: WEB_TAB_BAR_OFFSET },
