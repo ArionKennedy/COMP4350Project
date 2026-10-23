@@ -91,7 +91,7 @@ For local development, see:
 - **Movie Search:** Currently supports searching by movie title only.
 - **Frontend Testing:** Automated frontend tests have not yet been implemented.
 - **Deployment:** The application is not yet publicly deployed and currently runs locally.
-- **Authentication:** [placeholder]
+- **Authentication:** The applciaiton currently only creates a token from clerk on the frontend and makes a cookie for the user to login to the application with, however the user is not yet stored in the database alongside their authenticated token.
 - **Movie Lookup:** The lookup response does not currently include mediaType, although the frontend type expects this field.
 
 ## 9. Sprint Reflection
