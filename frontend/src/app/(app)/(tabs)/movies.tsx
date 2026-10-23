@@ -5,7 +5,7 @@ import { useTheme } from '@/hooks/use-theme';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/lib/theme';
 
 
-export default function HomeScreen() {
+export default function MoviesPage() {
   const theme = useTheme();
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.background}]}>
