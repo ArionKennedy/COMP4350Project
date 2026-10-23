@@ -16,7 +16,7 @@ flowchart LR
         D[(Redis Cache)]
     end
 
-    E[Auth0]
+    E[Clerk]
     F[External Media APIs]
 
     A -->|HTTP / API| B
@@ -45,8 +45,8 @@ flowchart LR
 - Its usage will depend on application needs.
 
 ### Authentication
-- **Auth0:** Handles user authentication.
-- The frontend uses Auth0 for login, while the backend validates authentication tokens.
+- **Clerk:** Handles user authentication.
+- The frontend uses Clerk for login, while the backend validates Clerk session tokens before accessing user-specific data.
 
 ### External Services
 - **External Media APIs:** Provide media information such as titles, creators, genres, and other metadata.

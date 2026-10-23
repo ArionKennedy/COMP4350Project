@@ -63,7 +63,7 @@ For the database schema, ER diagram, relationships, and data storage strategy, s
 
 ### Authentication and External Services
 
-- Auth0 for user authentication
+- Clerk for user authentication
 - External Media APIs to reduce storage requirements
 
 ### Hosting
@@ -71,7 +71,7 @@ For the database schema, ER diagram, relationships, and data storage strategy, s
 - Cloud hosting provider: TBD
 - AWS is currently being considered
 
-React Native with Expo will be used for cross-platform mobile development, while ASP.NET will provide the backend application logic and APIs. PostgreSQL will serve as the primary database, with Redis used as a local server cache for frequently accessed or recent queries. Auth0 will handle user authentication, while external media APIs will be used where appropriate to reduce storage requirements. Docker will be used to containerize the different components of the system. The final cloud hosting provider is still to be determined, with AWS currently under consideration.  
+React Native with Expo will be used for cross-platform mobile development, while ASP.NET will provide the backend application logic and APIs. PostgreSQL will serve as the primary database, with Redis used as a local server cache for frequently accessed or recent queries. Clerk handles user authentication, while external media APIs will be used where appropriate to reduce storage requirements. Docker will be used to containerize the different components of the system. The final cloud hosting provider is still to be determined, with AWS currently under consideration.
 
 Technology choices are preliminary and may evolve during development.  
 For more details and future updates, see [System Architecture](Docs/architecture.md).
