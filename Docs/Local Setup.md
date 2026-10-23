@@ -74,15 +74,17 @@ For local web development, configure:
 
 ```env
 EXPO_PUBLIC_API_URL=http://localhost:5251
+EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=<your_clerk_publishable_key>
 ```
 
-The API URL must match the address used by the backend.
+- `EXPO_PUBLIC_API_URL` must match the address used by the backend.
+- `EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY` is required for Clerk authentication. Obtain the publishable key from the team's development configuration.
 
 **Important:**
 
 - `.env.local` contains machine-specific configuration and should not be committed to Git.
 - `.env.example` is a template that can be committed.
-- Never put passwords or private API secrets in variables prefixed with `EXPO_PUBLIC_`, since Expo exposes these values to client applications.
+- Never put passwords, Clerk secret keys, or private API tokens in variables prefixed with `EXPO_PUBLIC_`, since Expo exposes these values to client applications.
 
 ### Expo Go on Physical Devices
 
@@ -114,13 +116,13 @@ Replace `your_local_password` with a password of your choice. Make sure the `.en
 
 The Docker Compose configuration uses the following settings:
 
-| Setting   | Value                        |
-| --------- | ---------------------------- |
-| Container | `palette-postgres`           |
-| Database  | `palette_dev`                |
-| Username  | `palette`                    |
-| Password  | Value of `POSTGRES_PASSWORD` |
-| Port      | `5432`                       |
+| Setting | Value |
+|---|---|
+| Container | `palette-postgres` |
+| Database | `palette_dev` |
+| Username | `palette` |
+| Password | Value of `POSTGRES_PASSWORD` |
+| Port | `5432` |
 
 ### Start PostgreSQL
 
@@ -157,13 +159,19 @@ If the backend project already has a `UserSecretsId`, you can skip `dotnet user-
 
 ### Configure the TMDB Token
 
-The backend will not start without a TMDB token. Copy the **API Read Access Token** from discord/resources and store it in user secrets:
+The backend requires a TMDB API Read Access Token to access movie information.
+
+Obtain the token from the team's shared development resources and store it using .NET User Secrets.
+
+From the project root:
 
 ```bash
-dotnet user-secrets set "Tmdb:ReadAccessToken" "<your token>" --project backend
+dotnet user-secrets set "Tmdb:ReadAccessToken" "<your_token>" --project backend
 ```
 
-(run at .../COMP4350Project)
+Replace `<your_token>` with the actual TMDB API Read Access Token.
+
+Do not commit the token to the repository.
 
 ### Stop PostgreSQL
 
@@ -218,7 +226,7 @@ For detailed instructions, see [Database Migrations](db-migration.md).
 
 ## 7. Run the Application
 
-Make sure PostgreSQL is running and the backend connection string has been configured.
+Make sure PostgreSQL is running and the backend connection string, TMDB token, and frontend environment variables have been configured.
 
 ### Option A: Start Frontend and Backend Together
 
@@ -269,3 +277,56 @@ npx expo start --web
 ```
 
 Running the services separately is useful when debugging frontend or backend issues.
+
+### Verify Backend Connection
+
+Once the backend is running, open:
+
+```text
+http://localhost:5251/api/test
+```
+
+Expected response:
+
+```json
+{
+  "message": "Connected to backend!"
+}
+```
+
+This verifies that the backend is running and responding to HTTP requests. It does not verify database connectivity or external API availability.
+
+## 8. Running Tests
+
+Palette includes automated backend tests and frontend development quality checks.
+
+### Backend Tests
+
+Backend tests use xUnit, including database unit tests with EF Core InMemory.
+
+From the repository root:
+
+```bash
+dotnet test tests/Palette.Tests.csproj
+```
+
+The same command is used in the GitHub Actions CI workflow.
+
+Some integration tests may require additional test configuration or services. Refer to the testing documentation for details.
+
+### Frontend Checks
+
+Automated frontend tests have not yet been implemented.
+
+The following commands can be used for static type checking and linting.
+
+From the `frontend` directory:
+
+```bash
+npx tsc --noEmit
+npx expo lint
+```
+
+These checks help identify TypeScript errors and code quality issues but do not replace automated frontend tests.
+
+For more details about testing frameworks, integration tests, and coverage, see [Testing Documentation](testing.md).
