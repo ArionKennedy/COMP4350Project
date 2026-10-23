@@ -23,7 +23,7 @@ export async function movieSearch(query :string, signal?: AbortSignal,) : Promis
     throw new Error('API URL is not configured');
   }
 
-  const url = `${API_URL}/api/search/${encodeURIComponent(query)}`
+  const url = `${API_URL}/api/search/movie?q=${encodeURIComponent(query)}`
   const response = await fetch(url, {signal});
 
   if(!response.ok){
@@ -31,6 +31,6 @@ export async function movieSearch(query :string, signal?: AbortSignal,) : Promis
     throw new Error(problem?.detail ?? `API request failed: ${response.status}`);
   }
 
-  const data: {resuslts : MediaSearchResult[] } = await response.json();
-  return data.resuslts;
+  const data: { results: MediaSearchResult[] } = await response.json();
+  return data.results;
 }
